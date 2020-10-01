@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Header, Header2 } from './components/Header.js'
+import {Header, Header2} from './components/Header'
+
 
 // function App() {
 //   return (
@@ -16,62 +17,58 @@ import { Header, Header2 } from './components/Header.js'
 // }
 
 class App extends React.Component {
-  constructor() {
+  constructor(){
     super()
     this.state = {
       name: "Asif",
       email: "asifahmed1us@hotmail.com"
     }
   }
-  getState = () => {
+  get_state = ()=>{
     console.log(this.state.name)
   }
 
-  set_state = (e) => {
+  set_state = ()=>{
     this.setState({
-      name: "Asif Ahmed1"
+      name: "Asif Ahmed"
     })
   }
 
-  handleChange = (e)=>{
+  handleChange(e){
     this.setState({
-      [e.target.name] : e.target.value,
-      
+      [e.target.name]:  e.target.value
     })
   }
 
-  get_props(props){
+  receiveProps(props){
     console.log(props)
   }
 
 
-
-  render() {
-    return (
+  render(){
+    return(
       <div>
-        <Header get_props={this.get_props} name={this.state.name} email={this.state.email}/>
-        <Header2 />
-        <h2>My name is {this.state.name}</h2>
-        <h2>My name is {this.state.email}</h2>
-        <input onChange={(e)=>{this.handleChange(e)}} name="name" type="text" placeholder="Name" />
-        <input onChange={(e)=>{this.handleChange(e)}} name="email" type="text" placeholder="email" />
-        <button onClick={this.getState}>Get State</button>
-        <button onClick={this.set_state}>Set State</button>
-        
+        <Header name={this.state.name} email={this.state.email} receiveProps={this.receiveProps}/>
+      <h1>My Name is {this.state.name}</h1>
+      <h1>Email is {this.state.email}</h1>
+      <input type="text" onChange={(e)=> this.handleChange(e)} name="name" placeholder="name" id=""/>
+      <input type="text" onChange={(e)=> this.handleChange(e)} name="email" placeholder="email" id=""/>
+      <button onClick={this.get_state}>Get Data</button>
+      <button onClick={this.set_state}>Set Data</button>
+      
         <Footer />
       </div>
+      
     )
   }
 }
 
-
-class Footer extends React.Component {
-  render() {
-    return (
-      <div className="footer">
-        <h3>Footer</h3>
-      </div>
+class Footer extends React.Component{
+  render(){
+    return(
+      <h3 className="footer">Footer</h3>
     )
   }
 }
+
 export default App;

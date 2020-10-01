@@ -1,21 +1,22 @@
 import React from 'react'
+
 class Header extends React.Component{
     render(){
         return(
-            <div className="header">
-                <h1>Header {this.props.name} {this.props.email}</h1>
-                <button onClick={()=>{this.props.get_props("sylani")}}>Get Porps</button>
-            </div>
+        <div>
+        <h1 className="header">Header {this.props.name} email {this.props.email}</h1>
+        <button onClick={()=>this.props.receiveProps("Sylani")}>Get Props</button>
+        </div>
         )
     }
 }
 
+
 class Header2 extends React.Component{
     render(){
         return(
-            <div>
-                <h4>Header 2</h4>
-            </div>
+        <h1>Header2 </h1>
+
         )
     }
 }
